@@ -1,0 +1,12 @@
+.wrapper-top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+ul.main-nav {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    list-style: none;
+}
