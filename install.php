@@ -1,15 +1,12 @@
 <?php
-include("includes/config.php");
+require __DIR__ . '/includes/init.php';
 
-$db = new mysqli(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
-
-if($db->connect_error) {
-    die("Conntection failed: " . $db->conntect_error);
-}
-
-//create db table
-$sql = "
+//drop if exists
+$sqlDrop = "
 DROP TABLE IF EXISTS buckets;
+);";
+//create db table
+$sqlTable = "
 CREATE TABLE buckets(
     id INT(10) PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(32) NOT NULL,
@@ -19,8 +16,10 @@ CREATE TABLE buckets(
 );";
 
 //send sql-query to server
-if($db->multi_query($sql)) {
-    echo "Skapad tabell OK!";
-} else {
-    echo "Fel vid skapande av tabell";
+try {
+    $db->run($sqlDrop);
+    $db->run($sqlTable);
+    echo 'Tabell skapad!';
+} catch (PDOException $e) {
+    echo 'Fel vid skapande av tabell: ' . e($e->getMessage());
 }
