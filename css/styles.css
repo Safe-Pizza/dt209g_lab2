@@ -1,7 +1,18 @@
+body {
+    background-color: rgb(245, 242, 247);
+}
+
 .wrapper-top {
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
+}
+
+main {
+    padding: 2em;
+    background-color: white;
+    border: 1px solid lightgray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 ul.main-nav {
@@ -9,4 +20,9 @@ ul.main-nav {
     gap: 1em;
     justify-content: flex-end;
     list-style: none;
+}
+
+footer {
+    padding: 1em;
+    text-align: right;
 }
