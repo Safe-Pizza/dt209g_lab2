@@ -71,7 +71,10 @@ include("includes/mainnav.php");
 </div>
 
 <div class="bucketlist">
-    <h3>Min bucketlist: (<?= count($buckets) ?>)</h3>
+    <h3>Min bucketlist(<?= count($buckets) ?>)</h3>
+    <?php if(!$buckets): ?>
+        <p>Finns inget tillagt i listan än!</p>
+    <?php else: ?>
     <table>
         <thead>
             <th>Namn</th>
@@ -90,6 +93,7 @@ include("includes/mainnav.php");
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php endif; ?>
 </div>
 
 <?php
