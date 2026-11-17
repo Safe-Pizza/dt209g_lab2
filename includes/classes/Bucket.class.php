@@ -7,7 +7,7 @@ class Bucket
         private string $description,
         private int $priority,
         private ?int $id = null,
-        private ?string $created = null
+        private ?string $createdAt = null
 
     ) {   
     }
@@ -16,5 +16,5 @@ class Bucket
     public function getName(): string           { return $this->name; }
     public function getDescription(): string    { return $this->description; }
     public function getPriority(): int          { return $this->priority; }
-    public function getCreatedAt(): ?string     { return $this->created; }
+    public function getCreatedAt(): ?string     { return $this->createdAt; }
 }
