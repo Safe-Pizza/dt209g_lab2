@@ -17,4 +17,14 @@ class Bucket
     public function getDescription(): string    { return $this->description; }
     public function getPriority(): int          { return $this->priority; }
     public function getCreatedAt(): ?string     { return $this->createdAt; }
+
+    public function getPriorityLabel(): string
+    {
+        return match ($this->priority) {
+            1 => 'Hög',
+            2 => 'Medel',
+            3 => 'Låg',
+            default => 'Okänd',
+        };
+    }
 }

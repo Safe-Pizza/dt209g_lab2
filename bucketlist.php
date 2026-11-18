@@ -4,7 +4,9 @@ require __DIR__ . '/includes/init.php';
 // ------- DATA & VARIABLER --------
 $storage = new Storage($db);
 $errors = [];
-$name = $description = $priority = ''; //empty forms
+$name = '';
+$description = '';
+$priority = 3;
 $buckets = $storage->getAll();
 
 // ------- POST --------
@@ -17,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'create') {
         $name = trim($_POST['name'] ?? '');
         $description = trim($_POST['description'] ?? '');
-        $priority = trim($_POST['priority'] ?? '');
+        $priority = (int) ($_POST['priority'] ?? 1);
 
         //validation
         if ($name === '')  $errors[] = 'Namn måste fyllas i.';
@@ -26,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mb_strlen($name) > 32)         $errors[] = 'Namn får vara högst 32 tecken.';
         if (mb_strlen($description) > 150) $errors[] = 'Beskrivning får vara högst 150 tecken.';
 
-        if (!ctype_digit($priority) || (int)$priority < 1 || (int)$priority > 5) {
-            $errors[] = 'Prioritet måste vara ett heltal mellan 1 och 5.';
+        if (!in_array($priority, [1, 2, 3], true)) {
+            $errors[] = 'Ogiltig prioritet.';
+            $priority = 3;
         }
 
         //if no errros, create new bucket to databse
@@ -82,10 +85,14 @@ include("includes/mainnav.php");
         <input type="text" id="name" name="name" value="<?= e($name) ?>">
 
         <label for="description">Beskrivning:</label>
-        <textarea id="description" name="description" value="<?= e($description) ?>" placeholder="max 150 tecken"></textarea>
+        <textarea id="description" name="description"><?= e($description) ?></textarea>
 
         <label for="priority">Prioritet:</label>
-        <input type="number" id="priority" name="priority" value="<?= e($priority) ?>">
+        <select name="priority" id="priority">
+            <option value="1" <?= $priority === 1 ? 'selected' : '' ?>>Hög</option>
+            <option value="2" <?= $priority === 2 ? 'selected' : '' ?>>Medel</option>
+            <option value="3"<?= $priority === 3 ? 'selected' : '' ?>>Låg</option>
+        </select>
 
         <button type="submit">Lägg till</button>
     </form>
@@ -112,7 +119,7 @@ include("includes/mainnav.php");
                     <tr>
                         <td><?= e($bucket->getName()) ?></td>
                         <td><?= e($bucket->getDescription()) ?></td>
-                        <td><?= e((string)$bucket->getPriority()) ?></td>
+                        <td><?= e((string)$bucket->getPriorityLabel()) ?></td>
                         <td>
                             <form method="post" class="form-delete" onsubmit="return confirm('Vill du verkligen ta bort?');">
                                 <input type="hidden" name="action" value="delete">
