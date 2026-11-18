@@ -82,7 +82,7 @@ include("includes/mainnav.php");
         <input type="text" id="name" name="name" value="<?= e($name) ?>">
 
         <label for="description">Beskrivning:</label>
-        <input type="text" id="description" name="description" value="<?= e($description) ?>">
+        <textarea id="description" name="description" value="<?= e($description) ?>" placeholder="max 150 tecken"></textarea>
 
         <label for="priority">Prioritet:</label>
         <input type="number" id="priority" name="priority" value="<?= e($priority) ?>">
@@ -93,8 +93,9 @@ include("includes/mainnav.php");
 
 <div class="bucketlist">
     <h3>Min bucketlist(<?= count($buckets) ?>)</h3>
+    <!-- Kontroll om databas saknar buckets skriv ut p-element -->
     <?php if (!$buckets): ?>
-        <p>Finns inget tillagt i listan än!</p>
+        <p>Listan är tom. Lägg till något!</p>
     <?php else: ?>
         <table>
             <thead>
@@ -106,7 +107,7 @@ include("includes/mainnav.php");
                 </tr>
             </thead>
             <tbody>
-                <!-- Print buckets to table -->
+                <!-- Loop för att skriva ut buckets från databas -->
                 <?php foreach ($buckets as $bucket): ?>
                     <tr>
                         <td><?= e($bucket->getName()) ?></td>
