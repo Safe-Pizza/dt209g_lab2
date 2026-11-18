@@ -26,8 +26,8 @@ if (isset($_POST['name'])) {
     }
 
     //if no errros, create new bucket to databse
-    if(!$errors) {
-                    
+    if (!$errors) {
+
         $bucket = new Bucket($name, $description, (int)$priority);
 
         if ($storage->create($bucket)) {
@@ -37,7 +37,6 @@ if (isset($_POST['name'])) {
 
         $errors[] = 'Något blev fel vid skapandet av Bucket.';
     }
-
 }
 
 include("includes/head.php");
@@ -50,9 +49,9 @@ include("includes/mainnav.php");
 <p>Här är min bucketlist</p>
 
 <div class="error-msg">
-<?php foreach ($errors as $error): ?>
-    <p class="error"><?= e($error) ?></p>
-<?php endforeach; ?>
+    <?php foreach ($errors as $error): ?>
+        <p class="error"><?= e($error) ?></p>
+    <?php endforeach; ?>
 </div>
 
 <div class="form-add-to-list">
@@ -72,27 +71,30 @@ include("includes/mainnav.php");
 
 <div class="bucketlist">
     <h3>Min bucketlist(<?= count($buckets) ?>)</h3>
-    <?php if(!$buckets): ?>
+    <?php if (!$buckets): ?>
         <p>Finns inget tillagt i listan än!</p>
     <?php else: ?>
-    <table>
-        <thead>
-            <th>Namn</th>
-            <th>Beskrivning</th>
-            <th>Prioritet</th>
-            <th>Ta bort</th>
-        </thead>
-        <tbody>
-            <!-- Print buckets to table -->
-            <?php foreach ($buckets as $bucket): ?>
+        <table>
+            <thead>
                 <tr>
-                    <td><?= e($bucket->getName()) ?></td>
-                    <td><?= e($bucket->getDescription()) ?></td>
-                    <td><?= e((string)$bucket->getPriority()) ?></td>
+                    <th>Namn</th>
+                    <th>Beskrivning</th>
+                    <th>Prioritet</th>
+                    <th>Ta bort</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <!-- Print buckets to table -->
+                <?php foreach ($buckets as $bucket): ?>
+                    <tr>
+                        <td><?= e($bucket->getName()) ?></td>
+                        <td><?= e($bucket->getDescription()) ?></td>
+                        <td><?= e((string)$bucket->getPriority()) ?></td>
+                        <td>Ta bort</td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php endif; ?>
 </div>
 
