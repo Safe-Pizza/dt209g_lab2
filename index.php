@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Startsida';
 include("includes/head.php");
 include("includes/mainnav.php");
 ?>

@@ -1,4 +1,5 @@
 <?php
+$pageTitle = "AI";
 include("includes/head.php");
 include("includes/mainnav.php");
 ?>

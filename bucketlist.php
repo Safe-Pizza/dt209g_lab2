@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Bucketlist';
 require __DIR__ . '/includes/init.php';
 
 // ------- DATA & VARIABLER --------
