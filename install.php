@@ -21,7 +21,7 @@ $examples = [
     ['Vandra Kungsleden', 'Gå hela Kungsleden från Abisko till Hemavan med tält och ryggsäck.', 2],
     ['Resa till Japan', 'Besöka Tokyo och Kyoto under körsbärsblomningen.', 2],
     ['Springa ett maraton', 'Träna upp till 42 km och genomföra ett lopp.', 3],
-    ['Skriva en bok', 'Skriva klart ett eget manus, oavsett om någon ger ut det.', 5],
+    ['Skriva en bok', 'Skriva klart ett eget manus, oavsett om någon ger ut det.', 3],
 ];
 
 //send sql-query to server
