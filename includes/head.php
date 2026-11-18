@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <title><?= $pageTitle ?> | PHP-Lab</title>
 </head>
+
 <body>
     <div class="container"> <!-- Container for whole page -->
         <div class="wrapper-top"> <!-- Container top -->
-        <header><h1>PHP-Lab</h1></header>
+            <header>
+                <h1>PHP-Lab</h1>
+            </header>

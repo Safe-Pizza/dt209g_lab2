@@ -36,13 +36,12 @@ try {
 //send sql query sample data
 try {
     foreach ($examples as [$name, $description, $priority]) {
-    $db->run(
-        'INSERT INTO buckets (name, description, priority)
-         VALUES (:name, :description, :priority)',
-        ['name' => $name, 'description' => $description, 'priority' => $priority]
-    );
-    echo 'Exempeldata skapad!';
-    } 
-} catch (PDOException $e) { 
+        $db->run(
+            'INSERT INTO buckets (name, description, priority) VALUES (:name, :description, :priority)',
+            ['name' => $name, 'description' => $description, 'priority' => $priority]
+        );
+        echo 'Exempeldata skapad!';
+    }
+} catch (PDOException $e) {
     echo 'Fel vid skapande av exempeldata: ' . e($e->getMessage());
 }

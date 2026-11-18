@@ -15,7 +15,7 @@ include("includes/mainnav.php");
 <p>AI levererade en guide i flera steg, förslag att arbeta i mindre testbara steg med ordningsförslag, förslag på mappstruktur och klassuppdelning samt förslag på eventuell fördjupning.</p>
 <p>Jag använde underlaget från AI som grund och kombinerade det med kursmaterial för att testa olika lösningar för tex databasanslutningar.</p>
 <blockquote><strong>Prompt:</strong> Jag läser en kurs i php och önskar guidning för att lära mig php genom att bygga en applikation med objektorienterad php. applikationen ska ha anslutning till en sql databas. data ska läsas in från formulär, läggas till och raderas i databasen. jag har tidigare läst: html, css, javascript, typescript. XAMPP kommer användas.
-applikationen ska ha tre undersidor: startsida, bucketlist och ai.</blockquote>
+    applikationen ska ha tre undersidor: startsida, bucketlist och ai.</blockquote>
 
 <h3>Utvärdering och reflektion</h3>
 <p>Det är en ny värld att sätta sig in i och det var ett annorlunda sätt att lära sig på jämfört vad jag är van vid. Jag märkte relativt snabbt att även fast PHP är ett nytt språk så kunde jag lätt förstå koden. Något jag tyckte gav mig bra stöd var att AIn presenterade skillnaderna och jämförde PHP med Javascript/Typescript.</p>
