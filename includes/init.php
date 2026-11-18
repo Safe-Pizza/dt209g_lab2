@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/config.php';
+require_once __DIR__ . '/config.php';
 
 // Function for safe html-code
 function e(?string $text): string

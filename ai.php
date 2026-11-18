@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "AI";
-include("includes/head.php");
-include("includes/mainnav.php");
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/mainnav.php';
 ?>
 
 <h2>AI - Redovisning</h2>
@@ -21,5 +21,5 @@ include("includes/mainnav.php");
 <p>Det är en ny värld att sätta sig in i och det var ett annorlunda sätt att lära sig på jämfört vad jag är van vid. Jag märkte relativt snabbt att även fast PHP är ett nytt språk så kunde jag lätt förstå koden. Något jag tyckte gav mig bra stöd var att AIn presenterade skillnaderna och jämförde PHP med Javascript/Typescript.</p>
 <p>Överlag tyckte jag det fungerade bra med att använda AI-stöd. Jag har lärt mig mycket av grunderna i PHP, fått träna på OOP och fått läsa kod som jag granskat och testat för att slutligen skapat en fungerande applikation.</p>
 <?php
-include("includes/footer.php");
+include __DIR__ . '/includes/footer.php';
 ?>

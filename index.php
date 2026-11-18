@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Startsida';
-include("includes/head.php");
-include("includes/mainnav.php");
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/mainnav.php';
 ?>
 
 <h2>Startsida</h2>
@@ -37,5 +37,5 @@ include("includes/mainnav.php");
 <p>En nackdel som jag upplevde med PHP var att det blev lite stökigt i koden när det blandades med HTML och i ett större projekt kan jag tänka mig att det kan bli ett problem. Det kändes då viktigt att försöka ha bra struktur så man senare kan hitta det man söker när man ska göra ändringar eller uppdateringar.</p>
 
 <?php
-include("includes/footer.php");
+include __DIR__ . '/includes/footer.php';
 ?>

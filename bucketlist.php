@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include("includes/head.php");
-include("includes/mainnav.php");
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/mainnav.php';
 
 
 ?>
@@ -138,5 +138,5 @@ include("includes/mainnav.php");
 </div>
 
 <?php
-include("includes/footer.php");
+include __DIR__ . '/includes/footer.php';
 ?>
