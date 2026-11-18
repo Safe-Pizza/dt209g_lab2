@@ -33,7 +33,8 @@ include("includes/mainnav.php");
 </ul>
 
 <h3>Reflektioner PHP</h3>
-<p>Mina reflektioner</p>
+<p>Det har varit kul att få lära sig PHP! Språket har varit ganska lätt att ta till sig och att enkelt kunna skriva direkt tillsammans med HTML-koden för att hantera exempelvis forumälr upplever jag som en stor fördel med PHP. En fördel jag tycker PHP har är att det finns stöd för objektorienterad programmering.</p>
+<p>En nackdel som jag upplevde med PHP var att det blev lite stökigt i koden när det blandades med HTML och i ett större projekt kan jag tänka mig att det kan bli ett problem. Det kändes då viktigt att försöka ha bra struktur så man senare kan hitta det man söker när man ska göra ändringar eller uppdateringar.</p>
 
 <?php
 include("includes/footer.php");
