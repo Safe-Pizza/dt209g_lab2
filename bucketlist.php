@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($name === '')  $errors[] = 'Namn måste fyllas i.';
         if ($description === '') $errors[] = 'Beskrivning måste fyllas i.';
 
-        if (mb_strlen($name) > 32)         $errors[] = 'Namn får vara högst 32 tecken.';
-        if (mb_strlen($description) > 150) $errors[] = 'Beskrivning får vara högst 150 tecken.';
+        if (strlen($name) > 32)         $errors[] = 'Namn får vara högst 32 tecken.';
+        if (strlen($description) > 150) $errors[] = 'Beskrivning får vara högst 150 tecken.';
 
         if (!in_array($priority, [1, 2, 3], true)) {
             $errors[] = 'Ogiltig prioritet.';

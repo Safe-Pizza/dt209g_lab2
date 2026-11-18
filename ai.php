@@ -8,7 +8,7 @@ include __DIR__ . '/includes/mainnav.php';
 <p>Denna sida beskriver hur AI används för uppgifen och vilket/vilka verktyg som används.</p>
 
 <h3>AI-verktyg</h3>
-<p><a href="https://claude.ai/">Claude.ai</a> har använts som handledare och kodstöd för denna uppgift</p>
+<p><a href="https://claude.ai/" target="_blank">Claude.ai</a> har använts som handledare och kodstöd för denna uppgift</p>
 
 <h3>Hur AI använts</h3>
 <p>Jag promptade Claude.ai där jag bad om guidning för att bygga en applikation med OOP-PHP, MySQL och XAMPP. Skickade även med information att jag läser en kurs i PHP och tidigare har läst kurser i HTML, CSS, Javascript och Typescript.</p>
