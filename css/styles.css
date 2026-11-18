@@ -26,3 +26,13 @@ footer {
     padding: 1em;
     text-align: right;
 }
+
+.form-delete {
+    display: flex;
+    margin-bottom: 0;
+    align-content: center;
+}
+
+.form-delete input[type="submit"] {
+    margin-bottom: 0;
+}

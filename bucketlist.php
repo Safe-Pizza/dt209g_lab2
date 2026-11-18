@@ -9,33 +9,53 @@ $buckets = $storage->getAll();
 
 // ------- POST --------
 
-if (isset($_POST['name'])) {
-    $name = trim($_POST['name'] ?? '');
-    $description = trim($_POST['description'] ?? '');
-    $priority = trim($_POST['priority'] ?? '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    //validation
-    if ($name === '')  $errors[] = 'Namn måste fyllas i.';
-    if ($description === '') $errors[] = 'Beskrivning måste fyllas i.';
+    $action = $_POST['action'] ?? '';
 
-    if (mb_strlen($name) > 32)         $errors[] = 'Namn får vara högst 32 tecken.';
-    if (mb_strlen($description) > 150) $errors[] = 'Beskrivning får vara högst 150 tecken.';
+    // ------ ACTION - LÄGG TILL -------
+    if ($action === 'create') {
+        $name = trim($_POST['name'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $priority = trim($_POST['priority'] ?? '');
 
-    if (!ctype_digit($priority) || (int)$priority < 1 || (int)$priority > 5) {
-        $errors[] = 'Prioritet måste vara ett heltal mellan 1 och 5.';
-    }
+        //validation
+        if ($name === '')  $errors[] = 'Namn måste fyllas i.';
+        if ($description === '') $errors[] = 'Beskrivning måste fyllas i.';
 
-    //if no errros, create new bucket to databse
-    if (!$errors) {
+        if (mb_strlen($name) > 32)         $errors[] = 'Namn får vara högst 32 tecken.';
+        if (mb_strlen($description) > 150) $errors[] = 'Beskrivning får vara högst 150 tecken.';
 
-        $bucket = new Bucket($name, $description, (int)$priority);
-
-        if ($storage->create($bucket)) {
-            header('Location: bucketlist.php'); //redirect after POST
-            exit;
+        if (!ctype_digit($priority) || (int)$priority < 1 || (int)$priority > 5) {
+            $errors[] = 'Prioritet måste vara ett heltal mellan 1 och 5.';
         }
 
-        $errors[] = 'Något blev fel vid skapandet av Bucket.';
+        //if no errros, create new bucket to databse
+        if (!$errors) {
+
+            $bucket = new Bucket($name, $description, (int)$priority);
+
+            if ($storage->create($bucket)) {
+                header('Location: bucketlist.php'); //redirect after POST
+                exit;
+            }
+
+            $errors[] = 'Något blev fel vid skapandet av Bucket.';
+        }
+    }
+
+    //----- ACTION - TA BORT -----
+    if ($action === 'delete') {
+        $id = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
+
+        if ($id === false || $id <= 0) {
+            $errors[] = 'Ogiltigt id.';
+        } elseif ($storage->delete($id)) {
+            header('Location: bucketlist.php'); // redirect after POST
+            exit;
+        } else {
+            $errors[] = 'Kunde inte ta bort bucketen.';
+        }
     }
 }
 
@@ -56,6 +76,8 @@ include("includes/mainnav.php");
 
 <div class="form-add-to-list">
     <form method="post">
+        <input type="hidden" name="action" value="create">
+
         <label for="name">Namn:</label>
         <input type="text" id="name" name="name" value="<?= e($name) ?>">
 
@@ -90,7 +112,13 @@ include("includes/mainnav.php");
                         <td><?= e($bucket->getName()) ?></td>
                         <td><?= e($bucket->getDescription()) ?></td>
                         <td><?= e((string)$bucket->getPriority()) ?></td>
-                        <td>Ta bort</td>
+                        <td>
+                            <form method="post" class="form-delete" onsubmit="return confirm('Vill du verkligen ta bort?');">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="id" value="<?= (int) $bucket->getId() ?>">
+                                <input type="submit" value="Ta bort">
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

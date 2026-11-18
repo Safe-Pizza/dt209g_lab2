@@ -20,17 +20,33 @@ class Storage
             'INSERT INTO buckets (name, description, priority)
              VALUES (:name, :description, :priority)',
             [
-                'name'  => $bucket->getName(),
-                'description' => $bucket->getDescription(),
-                'priority'   => $bucket->getPriority(),
+                ':name'  => $bucket->getName(),
+                ':description' => $bucket->getDescription(),
+                ':priority'   => $bucket->getPriority(),
             ]
         );
         return true;
         } catch (PDOException $e) {
-            echo 'Något gick fel vid skapandet av ny bucket' . e($e->getMessage());
+            error_log('Något gick fel vid skapandet av ny bucket' . e($e->getMessage()));
             return false;
         }
 
+    }
+
+    public function delete(int $id): bool
+    {
+        try {
+            $stmt = $this->db->run(
+            'DELETE FROM buckets WHERE id = :id',
+            [
+                ':id' => $id
+            ]
+        );
+        return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('Något gick fel vid skapandet av ny bucket' . e($e->getMessage()));
+            return false;
+        }
     }
 
     //translate database row to Bucket-object
