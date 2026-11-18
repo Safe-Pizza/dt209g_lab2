@@ -111,7 +111,8 @@ include("includes/mainnav.php");
                     <th>Namn</th>
                     <th>Beskrivning</th>
                     <th>Prioritet</th>
-                    <th>Ta bort</th>
+                    <th>Skapad</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -121,6 +122,7 @@ include("includes/mainnav.php");
                         <td><?= e($bucket->getName()) ?></td>
                         <td><?= e($bucket->getDescription()) ?></td>
                         <td><?= e((string)$bucket->getPriorityLabel()) ?></td>
+                        <td><?= e($bucket->getCreatedAt()) ?></td>
                         <td>
                             <form method="post" class="form-delete" onsubmit="return confirm('Vill du verkligen ta bort?');">
                                 <input type="hidden" name="action" value="delete">
