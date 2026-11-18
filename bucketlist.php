@@ -92,7 +92,7 @@ include("includes/mainnav.php");
         <select name="priority" id="priority">
             <option value="1" <?= $priority === 1 ? 'selected' : '' ?>>Hög</option>
             <option value="2" <?= $priority === 2 ? 'selected' : '' ?>>Medel</option>
-            <option value="3"<?= $priority === 3 ? 'selected' : '' ?>>Låg</option>
+            <option value="3" <?= $priority === 3 ? 'selected' : '' ?>>Låg</option>
         </select>
 
         <button type="submit">Lägg till</button>
