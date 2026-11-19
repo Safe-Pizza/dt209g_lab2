@@ -70,7 +70,7 @@ include __DIR__ . '/includes/mainnav.php';
 ?>
 
 <h2>Bucketlist</h2>
-<p>Här är min bucketlist</p>
+<p>Här kan du lägga till dina mål och drömmar samt dess prioritering i en bucketlist, en lista på allt du vill hinna med att göra under din livstids. </p>
 
 <div class="error-msg">
     <?php foreach ($errors as $error): ?>
